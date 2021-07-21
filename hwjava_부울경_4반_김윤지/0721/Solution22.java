@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/*  !!!!!~디버깅해서 오류 찾기 ~!!!!!
+/* 
  *  소금쟁이가 처음 뛸 때는 3칸 두번 째 2칸 세번쨰 1칸
  *  연못 밖으로 나가거나 머물고 있는 소금쟁이와 충돌하면 죽는다.
  *  N은 5~20
@@ -18,12 +18,11 @@ import java.util.Scanner;
 public class Solution22 {
 	public static void main(String[] args) throws FileNotFoundException{
 		System.setIn(new FileInputStream("res/Solution22.txt"));
-		Scanner sc = new Scanner(System.in);
-		//			
-		int[] dr = {-1,1}; //상 하
-		int[] dc = {-1,1}; //좌 우
+		Scanner sc = new Scanner(System.in);	
+		//			상,하,좌,우
+		int[] dr = {-1,1,0,0};
+		int[] dc = {0,0,-1,1};
 		int T = sc.nextInt();	//테스트 케이스
-
 		
 		for(int test_case=1; test_case<=T; test_case++) { 
 			int N = sc.nextInt(); //연못 크기
@@ -48,11 +47,14 @@ public class Solution22 {
 					AnswerW--;
 					break;
 				}
-				for (int j = 3; j >0; j--) { //3칸->1칸 점프
-					if(dir ==1) 	 { nr += j*dr[0]; }
-					else if(dir ==2) { nr += j*dr[1]; }
-					else if(dir ==3) { nc += j*dc[0]; }
-					else if(dir ==4) { nc += j*dc[1]; }
+				
+				
+				for (int j = 3; j >0; j--) { //3칸->2칸->1칸 점프
+					if(dir ==1) 	 { nr += j*dr[dir-1]; }
+					else if(dir ==2) { nr += j*dr[dir-1]; }
+					else if(dir ==3) { nc += j*dc[dir-1]; }
+					else if(dir ==4) { nc += j*dc[dir-1]; }
+					else break; 
 					
 					if(nr< 0 || nr >= N || nc < 0 || nc >= N) { //연못 밖이라면 죽음
 						AnswerW--;
@@ -63,13 +65,15 @@ public class Solution22 {
 						AnswerW--;
 						break;
 					}
-					map[nr][nc]=1; //소금쟁이 머무는 표시
+					if(j==1) {			//머무는 소금쟁이 표시
+						map[nr][nc]=1; 
+						
+					}
  				}
 			}
 			
 			System.out.println("#"+test_case+" "+AnswerW);
 		}
-		sc.close();
 	}
 
 }

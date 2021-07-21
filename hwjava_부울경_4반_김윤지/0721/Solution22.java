@@ -67,7 +67,6 @@ public class Solution22 {
 					}
 					if(j==1) {			//머무는 소금쟁이 표시
 						map[nr][nc]=1; 
-						
 					}
  				}
 			}

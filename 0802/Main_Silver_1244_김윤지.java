@@ -1,23 +1,32 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 public class Main_Silver_1244_김윤지 {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int Switch = sc.nextInt(); // 스위치 수
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int Switch = Integer.parseInt(br.readLine()); // 스위치 수
 		int[] state = new int[Switch]; // 스위치 상태
-		for (int i = 0; i < Switch; i++) {
-			state[i] = sc.nextInt();
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		for(int i=0; i<Switch; i++) {
+			state[i] = Integer.parseInt(st.nextToken());
 		}
 
-		int std = sc.nextInt(); // 학생수
+		int std = Integer.parseInt(br.readLine()); // 학생수
 
 		for (int i = 0; i < std; i++) {
-			int gender = sc.nextInt(); // 성별
-			int num = sc.nextInt(); // 번호
+			st = new StringTokenizer(br.readLine());
+			int gender = Integer.parseInt(st.nextToken()); // 성별
+			int num = Integer.parseInt(st.nextToken()); // 번호
 
 			if (gender == 1) {// 남학생
-				for (int j = 0; j < Switch; j++) {
+				for (int j = 1; j < Switch-1; j++) {
 					if ((j + 1) % num == 0) { // 배수를 찾아 0이면 1, 1이면 0
 						if (state[j] == 1)
 							state[j] = 0;
@@ -59,5 +68,4 @@ public class Main_Silver_1244_김윤지 {
 			if((i+1)%20==0)System.out.println();
 		}
 	}
-
 }

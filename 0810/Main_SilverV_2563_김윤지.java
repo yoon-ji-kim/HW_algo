@@ -1,8 +1,6 @@
-package bs;
-
 import java.util.Scanner;
 
-public class Main_2563 {
+public class  Main_SilverV_2563_김윤지 {
 
 	public static void main(String[] args) {
 		//색종이 넓이

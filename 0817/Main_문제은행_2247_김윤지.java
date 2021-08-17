@@ -1,4 +1,3 @@
-package jungol;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class jungol_2247 {
+public class Main_문제은행_2247_김윤지 {
 	static class Room implements Comparable<Room> {
 		int stime;
 		int etime;

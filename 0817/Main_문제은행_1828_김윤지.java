@@ -10,8 +10,8 @@ public class Main_문제은행_1828_김윤지 {
 		int highTemp;
 		
 		public Chemical(int lowTemp, int highTemp) {
-			this.lowTemp = lowTemp;
-			this.highTemp = highTemp;
+			this.lowTemp = lowTemp; //최저 온도
+			this.highTemp = highTemp; //최고온도
 		}
 		
 		@Override
@@ -36,11 +36,12 @@ public class Main_문제은행_1828_김윤지 {
 					Integer.parseInt(st.nextToken())
 					));
 		}
-		
+		//리스트 정렬
 		Collections.sort(list);
 		
 		//화학 물질의 최저 온도가 이전 화학물질의 최고 온도보다 낮으면 저장가능
 		//=>이전 물질의 최고 온도보다 현재 물질의 최저온도가 높으면 냉장고 추가
+		
 		//현재 최고온도를 최고온도로 설정
 		int high = list.get(0).highTemp;
 		int cnt =1;
